@@ -1,4 +1,4 @@
-package phzzk.phzzkhexagonaluserservice.adapter.in.web.mapper;
+package phzzk.phzzkhexagonaluserservice.adapter.in.web.exception.mapper;
 
 import phzzk.phzzkhexagonaluserservice.adapter.in.web.response.ErrorResponse;
 import phzzk.phzzkhexagonaluserservice.domain.exception.ErrorCode;

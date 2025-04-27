@@ -1,10 +1,9 @@
-package phzzk.phzzkhexagonaluserservice.adapter.in.web.handler;
+package phzzk.phzzkhexagonaluserservice.adapter.in.web.exception.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import phzzk.phzzkhexagonaluserservice.adapter.in.web.mapper.ExceptionMapper;
 import phzzk.phzzkhexagonaluserservice.adapter.in.web.response.ErrorResponse;
 import phzzk.phzzkhexagonaluserservice.domain.exception.CustomException;
 import phzzk.phzzkhexagonaluserservice.domain.exception.ErrorCode;

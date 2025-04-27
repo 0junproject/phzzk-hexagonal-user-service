@@ -12,6 +12,7 @@ public enum ErrorCode {
     JWT_EXPIRED(HttpStatus.FORBIDDEN, ErrorType.AUTH, "JWT01", "JWT 토큰이 만료되었습니다."),
     JWT_INVALID(HttpStatus.UNAUTHORIZED, ErrorType.AUTH, "JWT02", "JWT 토큰이 유효하지 않습니다."),
     AUTHENTICATION_FAILED(HttpStatus.UNAUTHORIZED, ErrorType.AUTH, "AUTH01", "인증에 실패했습니다."),
+    ACCESS_DENIED(HttpStatus.FORBIDDEN, ErrorType.AUTH, "AUTH02", "접근이 거부되었습니다"),
 
     // ==== USER 관련 ====
     INVALID_EMAIL_FORMAT(HttpStatus.BAD_REQUEST, ErrorType.USER, "USR01", "이메일 형식이 올바르지 않습니다."),
