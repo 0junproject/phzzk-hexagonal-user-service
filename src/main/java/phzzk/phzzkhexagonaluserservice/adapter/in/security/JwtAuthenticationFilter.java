@@ -34,13 +34,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain
     ) throws ServletException, IOException {
-        //전략 패턴 사용
+        //전략 패턴을 사용한 AuthorizationExtractor 구현체 조회
         AuthorizationExtractor extractor = authorizationExtractors.get(authorizationType.toUpperCase());
         if (extractor == null) {
             filterChain.doFilter(request, response);
             return;
         }
-
+        // 토큰 추출
         String token = extractor.extract(request);
 
         if (StringUtils.hasText(token) && jwtTokenProvider.validateAccessToken(token)) {

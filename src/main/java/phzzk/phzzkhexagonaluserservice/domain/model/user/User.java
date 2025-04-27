@@ -1,12 +1,16 @@
 package phzzk.phzzkhexagonaluserservice.domain.model.user;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import phzzk.phzzkhexagonaluserservice.domain.model.user.vo.Email;
 import phzzk.phzzkhexagonaluserservice.domain.model.user.vo.Nickname;
 import phzzk.phzzkhexagonaluserservice.domain.model.user.vo.Password;
 
 import java.time.LocalDateTime;
 
-class User {
+@AllArgsConstructor
+@NoArgsConstructor
+public class User {
     private String id;                // USR_UUID
     private Email email;              // VO
     private Password password;        // VO (nullable)
