@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://<postgresql-host>:5432/userdb
+    driver-class-name: org.postgresql.Driver
+    username: <db-username>
+    password: <db-password>
+  jpa:
+    hibernate:
+      ddl-auto: validate  # 운영은 validate 추천
+    show-sql: false

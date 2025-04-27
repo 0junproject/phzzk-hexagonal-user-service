@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: user-service
+
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:h2:mem:userdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092  # 로컬 Kafka 없으면 dummy
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: user-service-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  cloud:
+    config:
+      enabled: false    # ⬅️ Config Client 아예 끔
+    bus:
+      enabled: false    # ⬅️ Cloud Bus도 끔
+    stream:
+      defaultBinder: kafka
+      kafka:
+        binder:
+          brokers: localhost:9092
+          autoCreateTopics: false
+      bindings:
+        userCreated-out-0:
+          destination: dummy-topic
+        userCreated-in-0:
+          destination: dummy-topic
+
+eureka:
+  client:
+    enabled: false     # ⬅️ Eureka Client 자체 비활성화
+    register-with-eureka: false
+    fetch-registry: false
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health
