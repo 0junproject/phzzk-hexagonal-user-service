@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import phzzk.phzzkhexagonaluserservice.adapter.in.security.filter.JwtAuthenticationFilter;
+import phzzk.phzzkhexagonaluserservice.adapter.in.security.handler.CustomAccessDeniedHandler;
+import phzzk.phzzkhexagonaluserservice.adapter.in.security.handler.CustomAuthenticationEntryPoint;
 
 @Configuration
 @EnableWebSecurity

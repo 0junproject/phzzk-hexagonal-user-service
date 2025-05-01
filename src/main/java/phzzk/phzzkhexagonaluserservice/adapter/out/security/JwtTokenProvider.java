@@ -1,4 +1,4 @@
-package phzzk.phzzkhexagonaluserservice.adapter.in.security.jwt;
+package phzzk.phzzkhexagonaluserservice.adapter.out.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

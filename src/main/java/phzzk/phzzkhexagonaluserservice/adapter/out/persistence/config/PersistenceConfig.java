@@ -35,7 +35,7 @@ public class PersistenceConfig {
         this.mongoAdapter = mongoAdapter;
     }
 
-    @Bean
+    @Bean("selectedUserRepositoryPort")
     public UserRepositoryPort userRepositoryPort() {
         Map<PersistenceType, UserRepositoryPort> strategyMap = new EnumMap<>(PersistenceType.class);
         strategyMap.put(PersistenceType.JPA, jpaAdapter);

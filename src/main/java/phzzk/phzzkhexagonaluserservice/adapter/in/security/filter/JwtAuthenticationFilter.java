@@ -1,8 +1,7 @@
-package phzzk.phzzkhexagonaluserservice.adapter.in.security;
+package phzzk.phzzkhexagonaluserservice.adapter.in.security.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +13,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 import phzzk.phzzkhexagonaluserservice.adapter.in.security.authorization.AuthorizationExtractor;
-import phzzk.phzzkhexagonaluserservice.adapter.in.security.jwt.JwtTokenProvider;
+import phzzk.phzzkhexagonaluserservice.adapter.out.security.JwtTokenProvider;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Map;
 
 @RequiredArgsConstructor
