@@ -51,6 +51,6 @@ public class User {
                                          Nickname nickname, UserId userId, String ownedChannelId
     ) {
         return new User(userId, email, password, nickname, AuthProvider.LOCAL,
-                null, false, ownedChannelId, Role.USER, now(), now());
+                UUID.randomUUID().toString(), false, ownedChannelId, Role.USER, now(), now());
     }
 }

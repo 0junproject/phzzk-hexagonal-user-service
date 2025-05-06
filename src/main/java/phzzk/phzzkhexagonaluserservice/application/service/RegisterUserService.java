@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import phzzk.phzzkhexagonaluserservice.adapter.out.chennel.FakeChannelCreateAdapter;
+import phzzk.phzzkhexagonaluserservice.adapter.out.kafka.UserCreatedKafkaProducer;
 import phzzk.phzzkhexagonaluserservice.application.port.in.RegisterUserUseCase;
 import phzzk.phzzkhexagonaluserservice.application.port.out.ChannelCreatePort;
 import phzzk.phzzkhexagonaluserservice.application.port.out.PasswordEncoderPort;
@@ -26,14 +27,17 @@ public class RegisterUserService implements RegisterUserUseCase {
     private final UserRepositoryPort userRepository;
     private final PasswordEncoderPort passwordEncoder;
     private final ChannelCreatePort channelCreatePort;
+    private final UserCreatedEventPort userCreatedEventPort;
 
     public RegisterUserService(
             @Qualifier("selectedUserRepositoryPort") UserRepositoryPort userRepository,
-            PasswordEncoderPort passwordEncoder, ChannelCreatePort channelCreatePort
+            PasswordEncoderPort passwordEncoder, ChannelCreatePort channelCreatePort,
+            UserCreatedEventPort userCreatedEventPort
     ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.channelCreatePort = channelCreatePort;
+        this.userCreatedEventPort = userCreatedEventPort;
     }
 
     @Override
@@ -66,7 +70,7 @@ public class RegisterUserService implements RegisterUserUseCase {
         User saved = userRepository.save(user);
 
         // 9. Kafka 이벤트 발행 (비동기)
-        UserCreatedEventPort.sendUserCreated(saved);
+        userCreatedEventPort.sendUserCreated(saved);
 
         return saved;
     }
