@@ -67,7 +67,6 @@ public class AuthController {
                 request.getPassword()
         );
 
-        log.info(user.getId().getValue());
         // 2. JWT 생성
         String token = jwtTokenProvider.generateAccessToken(user.getId().getValue());
 

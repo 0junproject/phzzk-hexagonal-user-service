@@ -12,6 +12,8 @@ import phzzk.phzzkhexagonaluserservice.domain.model.user.vo.UserId;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import static java.time.LocalDateTime.now;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -39,8 +41,16 @@ public class User {
                 false,                        // isEmailVerified
                 null,                         // ownedChannelId
                 Role.USER,
-                LocalDateTime.now(),
-                LocalDateTime.now()
+                now(),
+                now()
         );
+    }
+
+    public static User createWithChannel(Email email,
+                                         Password password,
+                                         Nickname nickname, UserId userId, String ownedChannelId
+    ) {
+        return new User(userId, email, password, nickname, AuthProvider.LOCAL,
+                null, false, ownedChannelId, Role.USER, now(), now());
     }
 }
